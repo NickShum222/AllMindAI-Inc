@@ -4,14 +4,14 @@ import { ObjectiveCard } from "@/Components";
 const Objective = () => {
   return (
     <>
-      <section className="max-w-7xl mx-auto px-4 mt-32">
+      <section className="max-w-7xl mx-auto px-4 mt-32 w-full">
         <div className="flex items-center justify-center flex-col gap-y-4 max-w-2xl mx-auto">
           <p className="text-lg tracking-[-0.015em] text-center">What we do</p>
           <h2 className="md:text-5xl text-3xl tracking-[-0.04em] text-center md:leading-[58px]">
             Powerful features and datasets for your analysis
           </h2>
         </div>
-        <div className="grid lg:grid-cols-2 gap-4 mt-20">
+        <div className="grid lg:grid-cols-2 gap-4 mt-20 w-full">
           <ObjectiveCard title="Find top engineers">
             <div className="flex h-full w-full px-4 items-center justify-center">
               <div className="grid grid-cols-3 gap-4 relative">
