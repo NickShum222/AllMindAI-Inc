@@ -1,5 +1,6 @@
 import React from "react";
 import { LANDING } from "@/Constants";
+import { Button } from "@/Components";
 
 const Landing = () => {
   return (
@@ -15,16 +16,12 @@ const Landing = () => {
               company intelligence to your fingertips
             </p>
             <div class="flex items-center justify-center">
-              <button
+              <Button
                 type="submit"
-                class="bg-aviato_highlight text-black rounded-md font-medium tracking-[-0.015em] shrink-0 h-[51px] px-[18px] mt-8"
-                aria-haspopup="dialog"
-                aria-expanded="false"
-                aria-controls="radix-:R3i6fn3a:"
-                data-state="closed"
+                className="bg-aviato_highlight text-black rounded-md font-medium tracking-[-0.015em] shrink-0 h-[51px] px-[18px] mt-8"
               >
                 Book a demo
-              </button>
+              </Button>
             </div>
           </div>
           <div class="absolute w-fit mt-20 left-1/2 right-1/2 -translate-x-[50%] *:shrink-0 flex items-center gap-4 *:h-64 2xl:scale-[1.2]">

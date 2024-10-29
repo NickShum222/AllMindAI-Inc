@@ -1,19 +1,36 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, useAnimation, AnimatePresence } from "framer-motion";
 
 const About = () => {
   const [active, setActive] = useState(0);
+  const [percentage, setPercentage] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActive((prev) => (prev + 1) % 3);
+      select((prev) => (prev + 1) % 3);
     }, 5000);
-    return () => {
-      clearInterval(interval);
-    };
+
+    return () => clearInterval(interval);
   }, [active]);
+
+  const progress = {
+    initial: {
+      width: "0%",
+    },
+    enter: {
+      width: "100%",
+    },
+  };
+  const duration = 5000;
+  const controls = useAnimation();
+  const select = (i) => {
+    setActive(i);
+    controls.stop();
+    controls.set("initial");
+    controls.start("enter");
+  }
 
 
 
@@ -38,6 +55,12 @@ const About = () => {
                       className={`absolute inset-0 w-0 bg-aviato_purple h-full ${
                         active === 0 ? "opacity-100" : "opacity-0"
                       }`}
+                      animate = {controls}
+                      variants={progress}
+                      initial="initial"
+                      transition = {{
+                        duration: duration / 1000,
+                      }}
                       // animate={{ width: progress + "%" }}
                       // style={{ width: 0, opacity: 1 }}
                     ></motion.div>
@@ -46,17 +69,23 @@ const About = () => {
                     className={`tracking-[-0.04em] text-2xl transition-opacity duration-500 ${
                       active == 0 ? "opacity-100" : "opacity-30"
                     }`}
-                    onClick={() => setActive(0)}
+                    onClick={() => select(0)}
                   >
                     Save hundreds of hours on research
                   </button>
                 </div>
                 <div className="space-y-8">
                   <div className="h-0.5 bg-neutral-200 relative">
-                    <motion.div
+                  <motion.div
                       className={`absolute inset-0 w-0 bg-aviato_purple h-full ${
                         active === 1 ? "opacity-100" : "opacity-0"
                       }`}
+                      animate = {controls}
+                      variants={progress}
+                      initial="initial"
+                      transition = {{
+                        duration: duration / 1000,
+                      }}
                       // animate={{ width: progress + "%" }}
                       // style={{ width: 0, opacity: 1 }}
                     ></motion.div>
@@ -65,17 +94,23 @@ const About = () => {
                     className={`tracking-[-0.04em] text-2xl transition-opacity duration-500 ${
                       active == 1 ? "opacity-100" : "opacity-30"
                     }`}
-                    onClick={() => setActive(1)}
+                    onClick={() => select(1)}
                   >
                     Be the first to find top talent &amp; founders
                   </button>
                 </div>
                 <div className="space-y-8">
                   <div className="h-0.5 bg-neutral-200 relative">
-                    <motion.div
+                  <motion.div
                       className={`absolute inset-0 w-0 bg-aviato_purple h-full ${
                         active === 2 ? "opacity-100" : "opacity-0"
                       }`}
+                      animate = {controls}
+                      variants={progress}
+                      initial="initial"
+                      transition = {{
+                        duration: duration / 1000,
+                      }}
                       // animate={{ width: progress + "%" }}
                       // style={{ width: 0, opacity: 1 }}
                     ></motion.div>
@@ -84,7 +119,7 @@ const About = () => {
                     className={`tracking-[-0.04em] text-2xl transition-opacity duration-500 ${
                       active == 2 ? "opacity-100" : "opacity-30"
                     }`}
-                    onClick={() => setActive(2)}
+                    onClick={() => select(2)}
                   >
                     Track your portfolio in one place
                   </button>
